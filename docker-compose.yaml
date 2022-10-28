@@ -1,0 +1,50 @@
+---
+version: '3.4'
+services:
+  weaviate-1:
+    command:
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8080'
+    - --scheme
+    - http
+    image: semitechnologies/weaviate:1.15.0
+    ports:
+    - 8080:8080
+    restart: on-failure:0
+    volumes:
+      - ./backups:/tmp/backups
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      DEFAULT_VECTORIZER_MODULE: 'none'
+      CLUSTER_HOSTNAME: 'node1'
+      ENABLE_MODULES: 'backup-filesystem'
+      BACKUP_FILESYSTEM_PATH: '/tmp/backups'
+      AUTOSCHEMA_ENABLED: 'false'
+  weaviate-2:
+    command:
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8080'
+    - --scheme
+    - http
+    image: semitechnologies/weaviate:1.15.0
+    ports:
+    - 8090:8080
+    restart: on-failure:0
+    volumes:
+      - ./backups:/tmp/backups
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      DEFAULT_VECTORIZER_MODULE: 'none'
+      CLUSTER_HOSTNAME: 'node1'
+      ENABLE_MODULES: 'backup-filesystem'
+      BACKUP_FILESYSTEM_PATH: '/tmp/backups'
+      AUTOSCHEMA_ENABLED: 'false'
+...
