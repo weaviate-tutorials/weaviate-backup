@@ -9,6 +9,6 @@ curl \
 -H "Content-Type: application/json" \
 -d '{
      "id": "my-very-first-backup",
-     "exclude": ["Book"]
+     "include": ["Author"]
     }' \
 http://localhost:8090/v1/backups/filesystem/my-very-first-backup/restore
