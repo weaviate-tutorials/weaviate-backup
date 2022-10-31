@@ -45,15 +45,6 @@ curl \
 -d '{
   "objects": [{
     "class": "Book",
-    "id": "36ddd591-2dee-4e7e-a3cc-b00000000011",
-    "properties": {
-        "title": "Fairy Tale",
-        "written_by": [{
-          "beacon": "weaviate://localhost/36ddd591-2dee-4e7e-a3cc-eb86d30a0001"
-        }]
-    }
-  }, {
-    "class": "Book",
     "id": "36ddd591-2dee-4e7e-a3cc-b00000000012",
     "properties": {
         "title": "The Shining",
