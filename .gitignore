@@ -1,5 +1,7 @@
 backups
 .DS_Store
+node_modules
+package*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
