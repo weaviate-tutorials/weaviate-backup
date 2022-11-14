@@ -33,8 +33,8 @@ The `volumes` parameter below [mounts a volume](https://weaviate.io/developers/w
 
 Now let’s dive into it to see the backup functionality in action!
 
-> **Code snippets**
-> This tutorial refers to scripts that you can run for yourself, such as `scripts/0_query_instances.sh` below. These files are located in `scripts` subdirectory in the repository. We include code in other languages as well as shell scripts, so that you can try it out with your preferred Weaviate client. Please take a look.
+> **Code examples**
+> The tutorial text refers to shell scripts (e.g. `scripts/0_query_instances.sh`), but we also provide code examples in other languages including **Python** and **JavaScript**. These files are located in `scripts` subdirectory, so please try them out yourself. 
 
 ## Populate one instance
 Both of our Weaviate instances W1 and W2 should be empty. Run `scripts/0_query_instances.sh` and you should see that neither instances contain a schema. If it is not empty, for example if you are re-running this tutorial, run `scripts/9_delete_all.sh` which will delete all of the existing schema and data at those locations.
@@ -118,6 +118,8 @@ curl http://localhost:8090/v1/backups/filesystem/my-very-first-backup/restore
 ```
 
 Weaviate remains available for read and write operations while backup operations are ongoing. And you can poll the endpoint to check its status, without worrying about any potential downtime.
+
+Check out `scripts/3a_check_backup_status.sh' and 'scripts/4b_check_restore_status.sh` for examples of how to query W1 for the backup status, or W2 for restore status respectively.
  
 ## Wrap-up
 That's it for our quick overview of the new backup feature available in Weaviate. We are excited for this feature as as it will make it easier and faster for you to back up your data which will in turn help to make your application more robust. 
