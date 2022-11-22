@@ -1,0 +1,29 @@
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+
+	"github.com/semi-technologies/weaviate-go-client/v4/weaviate"
+	"github.com/semi-technologies/weaviate-go-client/v4/weaviate/backup"
+)
+
+func main() {
+	hostW1 := "localhost:8080"
+
+	ctx := context.Background()
+	client := weaviate.New(weaviate.Config{Scheme: "http", Host: hostW1})
+
+	fmt.Println("\nChecking backup status");
+	createStatusResponse, err := client.Backup().CreateStatusGetter().
+		WithBackupID("my-very-first-backup").
+		WithBackend(backup.BACKEND_FILESYSTEM).
+		Do(ctx)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	asJson, _ := json.MarshalIndent(createStatusResponse, "", "  ")
+	fmt.Printf("%s\n", asJson)
+}
